@@ -21,18 +21,18 @@ import JobCard from './JobCard';
   Useful JS Method: Use the '.map()' method to transform the objects into components.
 */
 
-function JobList({ jobs, onSaveJob }) {
+function JobList({ jobs, savedJobs, onSaveJob }) {
     return (
         <div className="job-list">
-            {/* TODO: Implement mapping logic here */}
-            {/* Hint: Use jobs.length > 0 check and slice(0, 10) for now */}
-
+            {/* SOLVED: Map jobs array to JobCard components and handle empty state */}
             {jobs.length > 0 ? (
-                // Map jobs here...
-                <p>Jobs are ready to be mapped!</p>
+                jobs.map((item) => {
+                    // Check if this specific job is currently saved
+                    const isSaved = savedJobs.some(s => s.id === item.id);
+                    return <JobCard key={item.id} job={item} onSave={onSaveJob} isSaved={isSaved} />
+                })
             ) : (
-                // Empty state message...
-                <p>No jobs available.</p>
+                <p className="no-jobs">No jobs found. Try a different search!</p>
             )}
         </div>
     );

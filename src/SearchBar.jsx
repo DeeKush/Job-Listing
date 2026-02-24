@@ -20,7 +20,9 @@
 
 function SearchBar({ searchText, onSearchChange }) {
     const handleChange = (e) => {
-        // TODO: Implement the call to onSearchChange here
+        // SOLVED: Pass the current input value to the parent
+        const newValue = e.target.value;
+        onSearchChange(newValue);
     };
 
     return (

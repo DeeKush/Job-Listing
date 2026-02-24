@@ -1,89 +1,204 @@
-.app-container {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+/* Main App Layout */
+.app-wrapper {
+  min-height: 100vh;
 }
 
-.top-section {
+/* Header Styling */
+.main-header {
+  background-color: #fff;
+  padding: 15px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  /* Soft shadow */
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.header-content {
+  max-width: 1000px;
+  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
 }
 
-.search-bar {
-  flex-grow: 1;
-  margin-right: 15px;
+.logo-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ff5a00;
+  /* Internshala Orange */
 }
 
-.search-bar input {
-  width: 100%;
-}
-
-.toggle-btn {
-  background-color: #e67e22;
-}
-
-.toggle-btn:hover {
-  background-color: #d35400;
-}
-
-.stats-bar {
-  background-color: #ecf0f1;
-  padding: 10px;
-  border-radius: 5px;
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-button {
-  padding: 10px 20px;
-  cursor: pointer;
-  background-color: #3498db;
-  color: white;
+.nav-btn {
+  background: none;
   border: none;
-  border-radius: 5px;
-  font-weight: bold;
+  color: #666;
+  font-size: 1rem;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: 500;
 }
 
-button:hover {
-  background-color: #2980b9;
+.nav-btn.active {
+  color: #008bdc;
+  /* Blue for active nav like some portals */
+  border-bottom: 2px solid #008bdc;
 }
 
-.stats {
-  text-align: right;
-  font-weight: bold;
-  margin-bottom: 10px;
+/* Main Container */
+.container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
 }
 
+/* Search Section */
+.search-section {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.search-section h2 {
+  font-size: 1.8rem;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.search-box-wrapper {
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Results Header */
+.results-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.job-count {
+  font-weight: 600;
+  color: #555;
+}
+
+/* Loading State */
+.loading-container {
+  padding: 50px;
+  text-align: center;
+  background: white;
+  border-radius: 8px;
+}
+
+.loading-text {
+  color: #888;
+  font-style: italic;
+}
+
+/* Job List Area */
 .job-list {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 16px;
 }
 
+/* Job Card Styling - Internshala Style */
 .job-card {
-  padding: 15px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  background-color: #fafafa;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  padding: 24px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 12px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.job-card:hover {
+  border-color: #ddd;
+  /* Subtle hover effect */
 }
 
 .job-card h3 {
   margin: 0;
-  font-size: 1.1em;
+  font-size: 1.2rem;
   color: #333;
   text-transform: capitalize;
 }
 
-.loading {
-  text-align: center;
-  font-style: italic;
-  color: #777;
+.job-card p {
+  margin: 0;
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+/* Save Button Styling */
+.job-card button {
+  align-self: flex-end;
+  background-color: transparent;
+  color: #ff5a00;
+  border: 1px solid #ff5a00;
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.job-card .save-btn:hover {
+  background-color: #ff5a00;
+  color: white;
+}
+
+/* Saved button state */
+.job-card .saved-btn {
+  align-self: flex-end;
+  background-color: #f0f0f0;
+  color: #888;
+  border: 1px solid #ccc;
+  padding: 8px 20px;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.job-card .saved-btn:hover {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+/* Stats Bar */
+.stats-bar {
+  font-size: 0.9rem;
+  color: #888;
+}
+
+/* Search Input inside SearchBar component */
+.search-bar input {
+  border: none;
+  padding: 12px;
+  width: 95%;
+  font-size: 1rem;
+  outline: none;
+}
+
+/* Responsive Mobile Styles */
+@media (max-width: 600px) {
+  .header-content {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .container {
+    margin: 20px auto;
+  }
+
+  .results-info {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
 }

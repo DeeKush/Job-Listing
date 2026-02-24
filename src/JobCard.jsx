@@ -18,7 +18,7 @@
   Result: calls onSave({ id: 1, title: 'Frontend Developer' })
 */
 
-function JobCard({ job, onSave }) {
+function JobCard({ job, onSave, isSaved }) {
     return (
         <div className="job-card">
             <div className="job-info">
@@ -27,8 +27,13 @@ function JobCard({ job, onSave }) {
                 <p>{job.body ? job.body.substring(0, 100) + '...' : ''}</p>
             </div>
 
-            {/* TODO: Add a button here that calls onSave(job) when clicked */}
-            <button>Save Job</button>
+            {/* SOLVED: Change text based on isSaved and toggle onClick */}
+            <button
+                className={isSaved ? "saved-btn" : "save-btn"}
+                onClick={() => onSave(job)}
+            >
+                {isSaved ? "Saved" : "Save Job"}
+            </button>
         </div>
     );
 }

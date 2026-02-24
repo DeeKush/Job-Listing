@@ -53,7 +53,14 @@ function App() {
       Useful JS Methods: Use '.some()' or '.find()' to check for duplicates by 'id'.
     */
 
-    // TODO: Implement the update logic here using setSavedJobs
+    // SOLVED: Add the job if it's not in the list, remove if it is (Toggle)
+    const isDuplicate = savedJobs.some((s) => s.id === job.id);
+    if (!isDuplicate) {
+      setSavedJobs([...savedJobs, job]);
+    } else {
+      // Remove the job from saved list
+      setSavedJobs(savedJobs.filter(s => s.id !== job.id));
+    }
   };
 
   const toggleView = () => {
@@ -75,7 +82,8 @@ function App() {
       Useful Logic: Use a simple if/else statement or a ternary operator.
     */
 
-    // TODO: Implement the toggle logic here using setViewMode
+    // SOLVED: Toggle the viewMode state
+    setViewMode(viewMode === "All" ? "Saved" : "All");
   };
 
   // --- FILTERING LOGIC ---
@@ -102,34 +110,57 @@ function App() {
     Useful JS Methods: Use '.filter()', '.toLowerCase()', and '.includes()'.
   */
 
-  // TODO: Implement the final displayedJobs filter
-  const displayedJobs = jobs; // Current placeholder
+  // SOLVED: Combined filtering logic for view mode and search text
+  const viewFiltered = viewMode === "All" ? jobs : savedJobs;
+  const displayedJobs = viewFiltered.filter((job) =>
+    job.title.toLowerCase().includes(searchText.toLowerCase())
+  );
 
   return (
-    <div className="app-container">
-      <h1>My Refactored Job Portal</h1>
+    <div className="app-wrapper">
+      {/* Simple Top Header Bar */}
+      <header className="main-header">
+        <div className="header-content">
+          <span className="logo-text">JobPortal</span>
+          <nav>
+            <button className={`nav-btn ${viewMode === "All" ? "active" : ""}`} onClick={() => setViewMode("All")}>
+              All Jobs
+            </button>
+            <button className={`nav-btn ${viewMode === "Saved" ? "active" : ""}`} onClick={() => setViewMode("Saved")}>
+              Saved Jobs
+            </button>
+          </nav>
+        </div>
+      </header>
 
-      <div className="top-section">
-        <SearchBar
-          searchText={searchText}
-          onSearchChange={handleSearchChange}
-        />
+      <main className="container">
+        <section className="search-section">
+          <h2>Search your dream job</h2>
+          <div className="search-box-wrapper">
+            <SearchBar
+              searchText={searchText}
+              onSearchChange={handleSearchChange}
+            />
+          </div>
+        </section>
 
-        <button className="toggle-btn" onClick={toggleView}>
-          View: {viewMode} (Click to Change)
-        </button>
-      </div>
+        <div className="results-info">
+          <p className="job-count">Showing {displayedJobs.length} jobs</p>
+          <StatsBar savedJobs={savedJobs} />
+        </div>
 
-      <StatsBar savedJobs={savedJobs} />
-
-      {loading ? (
-        <p className="loading">Fetching jobs from the server...</p>
-      ) : (
-        <JobList
-          jobs={displayedJobs}
-          onSaveJob={handleSaveJob}
-        />
-      )}
+        {loading ? (
+          <div className="loading-container">
+            <p className="loading-text">Finding best opportunities for you...</p>
+          </div>
+        ) : (
+          <JobList
+            jobs={displayedJobs}
+            savedJobs={savedJobs}
+            onSaveJob={handleSaveJob}
+          />
+        )}
+      </main>
     </div>
   )
 }

@@ -18,8 +18,8 @@
 */
 
 function StatsBar({ savedJobs }) {
-    // TODO: Calculate the count of saved jobs
-    const count = 0; // Placeholder
+    // SOLVED: Calculate count based on savedJobs length
+    const count = savedJobs.length;
 
     return (
         <div className="stats-bar">
