@@ -1,24 +1,8 @@
 /* 
-  QUESTION 4: Displaying the Saved Jobs Count
-  ------------------------------------------
-  Task: Calculate how many jobs the user has saved and display it in the UI.
-  
-  Props involved:
-  - savedJobs: An array containing all the jobs currently saved by the user.
-  
-  Expected Behavior:
-  The component should read the number of items in the 'savedJobs' array and 
-  render that number inside the paragraph.
-  
-  Example:
-  Input: savedJobs = [{id: 1}, {id: 2}]
-  Output: "Total Saved Jobs: 2"
-  
-  Useful JS Trick: Use the '.length' property of the array.
+  StatsBar Component: Displays the number of saved jobs.
 */
-
 function StatsBar({ savedJobs }) {
-    // SOLVED: Calculate count based on savedJobs length
+    // Calculate total saved jobs
     const count = savedJobs.length;
 
     return (
