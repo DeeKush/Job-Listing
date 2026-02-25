@@ -1,8 +1,4 @@
-/* 
-  SearchBar Component: Handles user input for filtering jobs.
-*/
 function SearchBar({ searchText, onSearchChange }) {
-    // Function to handle input changes and notify parent
     const handleChange = (e) => {
         onSearchChange(e.target.value);
     };

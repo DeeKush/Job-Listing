@@ -1,14 +1,11 @@
-/* Main App Layout */
 .app-wrapper {
   min-height: 100vh;
 }
 
-/* Header Styling */
 .main-header {
   background-color: #fff;
   padding: 15px 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  /* Soft shadow */
   position: sticky;
   top: 0;
   z-index: 100;
@@ -26,7 +23,6 @@
   font-size: 1.5rem;
   font-weight: bold;
   color: #ff5a00;
-  /* Internshala Orange */
 }
 
 .nav-btn {
@@ -41,18 +37,15 @@
 
 .nav-btn.active {
   color: #008bdc;
-  /* Blue for active nav like some portals */
   border-bottom: 2px solid #008bdc;
 }
 
-/* Main Container */
 .container {
   max-width: 800px;
   margin: 40px auto;
   padding: 0 20px;
 }
 
-/* Search Section */
 .search-section {
   text-align: center;
   margin-bottom: 30px;
@@ -71,7 +64,6 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-/* Results Header */
 .results-info {
   display: flex;
   justify-content: space-between;
@@ -84,7 +76,6 @@
   color: #555;
 }
 
-/* Loading State */
 .loading-container {
   padding: 50px;
   text-align: center;
@@ -97,14 +88,12 @@
   font-style: italic;
 }
 
-/* Job List Area */
 .job-list {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-/* Job Card Styling - Internshala Style */
 .job-card {
   background-color: #fff;
   border: 1px solid #eee;
@@ -113,12 +102,10 @@
   display: flex;
   flex-direction: column;
   gap: 12px;
-  transition: transform 0.2s ease-in-out;
 }
 
 .job-card:hover {
   border-color: #ddd;
-  /* Subtle hover effect */
 }
 
 .job-card h3 {
@@ -135,7 +122,6 @@
   line-height: 1.5;
 }
 
-/* Save Button Styling */
 .job-card button {
   align-self: flex-end;
   background-color: transparent;
@@ -145,7 +131,6 @@
   border-radius: 4px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s;
 }
 
 .job-card .save-btn:hover {
@@ -153,7 +138,6 @@
   color: white;
 }
 
-/* Saved button state */
 .job-card .saved-btn {
   align-self: flex-end;
   background-color: #f0f0f0;
@@ -170,13 +154,11 @@
   color: #333;
 }
 
-/* Stats Bar */
 .stats-bar {
   font-size: 0.9rem;
   color: #888;
 }
 
-/* Search Input inside SearchBar component */
 .search-bar input {
   border: none;
   padding: 12px;
@@ -185,7 +167,15 @@
   outline: none;
 }
 
-/* Responsive Mobile Styles */
+.no-jobs {
+  text-align: center;
+  padding: 40px;
+  background: white;
+  border-radius: 8px;
+  color: #888;
+  border: 1px dashed #ccc;
+}
+
 @media (max-width: 600px) {
   .header-content {
     flex-direction: column;

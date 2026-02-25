@@ -5,14 +5,13 @@ import JobList from './JobList'
 import StatsBar from './StatsBar'
 
 function App() {
-  // --- STATE SECTION ---
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [searchText, setSearchText] = useState("");
   const [savedJobs, setSavedJobs] = useState([]);
   const [viewMode, setViewMode] = useState("All");
 
-  // --- FETCHING DATA ---
+  // Fetch jobs from API on mount
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/posts')
       .then(response => response.json())
@@ -26,40 +25,31 @@ function App() {
       });
   }, []);
 
-  // --- APP LEVEL FUNCTIONS ---
-
   const handleSearchChange = (text) => {
     setSearchText(text);
   };
 
-  // Handle saving/unsaving a job (Toggle Logic)
   const handleSaveJob = (job) => {
     const isAlreadySaved = savedJobs.some((s) => s.id === job.id);
     if (!isAlreadySaved) {
       setSavedJobs([...savedJobs, job]);
     } else {
-      // Remove from saved list
       setSavedJobs(savedJobs.filter((s) => s.id !== job.id));
     }
   };
 
-  // Toggle between All and Saved views
   const toggleView = () => {
     setViewMode(viewMode === "All" ? "Saved" : "All");
   };
 
-  // --- FILTERING LOGIC ---
-  // 1. Determine which jobs to start with based on viewMode
+  // Filter jobs based on view mode and search text
   const baseJobs = viewMode === "All" ? jobs : savedJobs;
-
-  // 2. Filter by search text (case-insensitive)
   const displayedJobs = baseJobs.filter((job) =>
     job.title.toLowerCase().includes(searchText.toLowerCase())
   );
 
   return (
     <div className="app-wrapper">
-      {/* Simple Top Header Bar */}
       <header className="main-header">
         <div className="header-content">
           <span className="logo-text">JobPortal</span>

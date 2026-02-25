@@ -1,8 +1,4 @@
-/* 
-  StatsBar Component: Displays the number of saved jobs.
-*/
 function StatsBar({ savedJobs }) {
-    // Calculate total saved jobs
     const count = savedJobs.length;
 
     return (
