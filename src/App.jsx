@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import SearchBar from './SearchBar'
-import JobList from './JobList'
-import StatsBar from './StatsBar'
+import SearchBar from './components/SearchBar'
+import JobList from './components/JobList'
+import StatsBar from './components/StatsBar'
 
 function App() {
   const [jobs, setJobs] = useState([]);
